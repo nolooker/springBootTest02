@@ -17,7 +17,7 @@ public class MemberFormDto {
     private String email;
 
     @NotEmpty(message = "비밀번호를 입력해주세요.")
-    @Length(min = 10, max = 20, message = "비밀번호는 10자리 이상, 20자리 이하로 입력해주세요.")
+    @Length(min = 4, max = 12, message = "비밀번호는 4자리 이상, 12자리 이하로 입력해주세요.")
     private String password;
 
     @NotEmpty(message = "주소를 입력해주세요.")
