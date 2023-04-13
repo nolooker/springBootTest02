@@ -1,5 +1,8 @@
 23.04.11
+<<<<<<< HEAD
 
+=======
+>>>>>>> ba0a0c69e2df8d5aa2e66123f8a00c8a8edeb412
 # application.properties
 spring.jpa.hibernate.ddl-auto=create -> spring.jpa.hibernate.ddl-auto=update
 
@@ -11,7 +14,10 @@ spring.jpa.hibernate.ddl-auto=create -> spring.jpa.hibernate.ddl-auto=update
 => Entity 기반으로 Q가 붙는 클래스
 
 23.04.12
+<<<<<<< HEAD
 
+=======
+>>>>>>> ba0a0c69e2df8d5aa2e66123f8a00c8a8edeb412
 # resources -> templates html 문서화
 thymeleafEx 불러오기
 
@@ -23,6 +29,7 @@ ShoppingApplication 실행
 
 # pom.xml layout 라이브러리 추가
 # 페이지 레이아웃
+<<<<<<< HEAD
 first,end.html -> mylayout -> view08 완성
 
 23.04.13 회원가입 및 로그인 기능 구현
@@ -49,4 +56,7 @@ meInsertForm.html
 MainController
 
 회원가입 session 만들고 MySQL 이랑 연동 및 html 페이지에 보이게 만드는 클래스
+=======
+first,end.html -> mylayout -> view08
+>>>>>>> ba0a0c69e2df8d5aa2e66123f8a00c8a8edeb412
 
