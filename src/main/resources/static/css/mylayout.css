@@ -6,6 +6,7 @@ html {
 body {
     min-height : 100% ;
 }
+
 .end, .abc{
    position: absolute;
     left: 0;
@@ -15,6 +16,7 @@ body {
     padding: 15px 0;
     text-align: center;
 }
+
 .content, .def{
     margin-bottom:100px;
     margin-top: 50px;
