@@ -77,6 +77,8 @@
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
 
+<<<<<<<<< Temporary merge branch 1
+=========
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -87,11 +89,7 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.thymeleaf.extras</groupId>
-			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
-		</dependency>
-
+>>>>>>>>> Temporary merge branch 2
 	</dependencies>
 
 	<build>
