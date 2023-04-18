@@ -1,14 +1,18 @@
 package com.computer.service;
 
 import com.computer.dto.ProductFormDto;
+import com.computer.dto.ProductImageDto;
 import com.computer.entity.Product;
 import com.computer.entity.ProductImage;
+import com.computer.repository.ProductImageRepository;
 import com.computer.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -39,5 +43,48 @@ public class ProductService {
         }
 
         return product.getId().longValue() ;
+    }
+
+    private final ProductImageRepository productImageRepository ;
+
+    // 등록된 상품 정보를 읽어 들입니다.
+    public ProductFormDto getProductDetail(Long productId) {
+
+        List<ProductImage> productImageList = productImageRepository.findByProductIdOrderByIdAsc(productId) ;
+
+        List<ProductImageDto> productImageDtoList = new ArrayList<ProductImageDto>() ;
+
+        for (ProductImage productImg : productImageList) {
+
+            ProductImageDto productImgDto = ProductImageDto.of(productImg) ;
+            productImageDtoList.add(productImgDto);
+        }
+
+        Product product = productRepository.findById(productId).orElseThrow(EntityNotFoundException::new) ;
+
+        ProductFormDto dto = ProductFormDto.of(product) ;
+
+        dto.setProductImageDtoList(productImageDtoList);
+
+        return dto ;
+    }
+
+    public Long updateProduct(ProductFormDto dto, List<MultipartFile> uploadFile) throws Exception {
+
+        Product product = productRepository.findById(dto.getId()).orElseThrow(EntityNotFoundException::new) ;
+
+        // 화면에서 넘어온 데이터를 Entity에게 전달
+        product.updateProduct(dto);
+
+        // 5 개의 이미지들에 대한 아이디 목록
+        List<Long> productImageIds = dto.getProductImageIds() ;
+
+        for (int i = 0; i < uploadFile.size(); i++) {
+
+            productImageService.updateProductImage(productImageIds.get(i), uploadFile.get(i)) ;
+
+        }
+
+        return product.getId() ;
     }
 }

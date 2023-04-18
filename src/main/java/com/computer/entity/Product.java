@@ -1,6 +1,7 @@
 package com.computer.entity;
 
 import com.computer.constant.ProductStatus;
+import com.computer.dto.ProductFormDto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -36,4 +37,14 @@ public class Product extends BaseEntity {
 
 //    private LocalDateTime regDate ;
 //    private LocalDateTime updateDate ;
+
+    public void updateProduct(ProductFormDto productFormDto) {
+        this.name = productFormDto.getName() ;
+        this.price = productFormDto.getPrice() ;
+        this.stock = productFormDto.getStock() ;
+        this.description = productFormDto.getDescription() ;
+        this.productStatus = productFormDto.getProductStatus() ;
+
+    }
+
 }
