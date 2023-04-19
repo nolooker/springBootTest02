@@ -2,11 +2,14 @@ package com.computer.service;
 
 import com.computer.dto.ProductFormDto;
 import com.computer.dto.ProductImageDto;
+import com.computer.dto.ProductSearchDto;
 import com.computer.entity.Product;
 import com.computer.entity.ProductImage;
 import com.computer.repository.ProductImageRepository;
 import com.computer.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -87,4 +90,11 @@ public class ProductService {
 
         return product.getId() ;
     }
+
+    public Page<Product> getAdminProductPage(ProductSearchDto dto, Pageable pageable) {
+        // 상품 검색 조건 dto와 페이징 객체 pageable를 사용해서 페이징 객체를 구함
+        return productRepository.getAdminProductPage(dto, pageable) ;
+    }
+
+
 }
